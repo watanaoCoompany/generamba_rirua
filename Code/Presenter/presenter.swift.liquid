@@ -1,0 +1,36 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+import Foundation
+
+// {{ module_info.name }}Presenterが準拠し、
+protocol {{ module_info.name }}PresenterProtocol: AnyObject {
+    <#requirements#>
+}
+
+// {{ module_info.name }}ViewControllerが準拠し、これのメソッドを使って画面を生成する
+protocol {{ module_info.name }}ViewProtocol: AnyObject {
+    <#requirements#>
+}
+
+class {{ module_info.name }}Presenter {
+    struct Dependency {
+        let router: {{ module_info.name }}RouterProtocol
+        let {{ module_info.name }}UseCase: UseCase< <#Parameter#>, <#Success#>, <#Failure#>>
+    }
+    
+    weak var view: {{ module_info.name }}ViewProtocol!
+    private var di: Dependency
+    
+    init(view: {{ module_info.name }}ViewProtocol, inject dependency: Dependency) {
+        self.view = view
+        self.di = dependency
+    }
+}
+
+extension {{ module_info.name }}Presenter: {{ module_info.name }}PresenterProtocol {
+}
